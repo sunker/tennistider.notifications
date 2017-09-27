@@ -13,7 +13,7 @@ module.exports = {
   async notifyUser(slots, email) {
     return new Promise(async(resolve, reject) => {
       var time = new Date().getHours()
-      if (time > 7 && time < 23) {
+      if (time >= 7 && time < 23) {
         let mail = new Mail(slots, email)
         mailClient.sendEmail(mail).then(() => {
           resolve()

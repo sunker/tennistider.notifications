@@ -63,18 +63,20 @@ exports.addTestUser = () => {
       [new TimeSlot(17, 21).toJSON()],
       [new TimeSlot(8, 20).toJSON()]
     ]
-  }, {
-    clubId: 22,
-    days: [
-      [new TimeSlot(8, 21).toJSON()], // Sunday
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(8, 20).toJSON()]
-    ]
-  }]
+  }
+//   , { Kungsholmen
+//     clubId: 22,
+//     days: [
+//       [new TimeSlot(8, 21).toJSON()], // Sunday
+//       [new TimeSlot(17, 21).toJSON()],
+//       [new TimeSlot(17, 21).toJSON()],
+//       [new TimeSlot(17, 21).toJSON()],
+//       [new TimeSlot(17, 21).toJSON()],
+//       [new TimeSlot(17, 21).toJSON()],
+//       [new TimeSlot(8, 20).toJSON()]
+//     ]
+//   }
+]
 
-//   User.add(user)
+User.add(user)
 }
