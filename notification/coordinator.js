@@ -16,6 +16,7 @@ module.exports = {
       if (time >= 7 && time < 23) {
         let mail = new Mail(slots, email)
         mailClient.sendEmail(mail).then(() => {
+          console.log(`Mail sent to: ${email}`)
           resolve()
         }).catch(err => {
           console.log(`Could not send mail to: ${email}. Error: ${err}`)

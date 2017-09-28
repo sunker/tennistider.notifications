@@ -9,74 +9,76 @@ exports.addTestUser = () => {
   user.active = true
   user.firstTimeUser = true
   user.slotPreference = [{
-    clubId: 1,
-    days: [
-      [new TimeSlot(8, 21).toJSON()], // sunday
-      [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()], // monday
-      [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()], // thuesday..
-      [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(8, 21).toJSON()]
-    ]
-  }, {
-    clubId: 2,
-    days: [
-      [new TimeSlot(8, 21).toJSON()], // Sunday
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(8, 20).toJSON()]
-    ]
-  }, {
-    clubId: 3,
-    days: [
-      [new TimeSlot(8, 20).toJSON()], // Sunday
-      [new TimeSlot(17, 20).toJSON()],
-      [new TimeSlot(17, 20).toJSON()],
-      [new TimeSlot(17, 20).toJSON()],
-      [new TimeSlot(17, 20).toJSON()],
-      [new TimeSlot(17, 20).toJSON()],
-      [new TimeSlot(8, 20).toJSON()]
-    ]
-  }, {
-    clubId: 20,
-    days: [
-      [new TimeSlot(8, 21).toJSON()], // Sunday
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(8, 20).toJSON()]
-    ]
-  }, {
-    clubId: 21,
-    days: [
-      [new TimeSlot(8, 21).toJSON()], // Sunday
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(17, 21).toJSON()],
-      [new TimeSlot(8, 20).toJSON()]
-    ]
-  }
-//   , { Kungsholmen
-//     clubId: 22,
-//     days: [
-//       [new TimeSlot(8, 21).toJSON()], // Sunday
-//       [new TimeSlot(17, 21).toJSON()],
-//       [new TimeSlot(17, 21).toJSON()],
-//       [new TimeSlot(17, 21).toJSON()],
-//       [new TimeSlot(17, 21).toJSON()],
-//       [new TimeSlot(17, 21).toJSON()],
-//       [new TimeSlot(8, 20).toJSON()]
-//     ]
-//   }
-]
+      clubId: 1,
+      days: [
+        [new TimeSlot(8, 21).toJSON()], // sunday
+        [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()], // monday
+        [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()], // thuesday..
+        [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(7, 9).toJSON(), new TimeSlot(12, 13).toJSON(), new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(8, 21).toJSON()]
+      ]
+    }, {
+      clubId: 2,
+      days: [
+        [new TimeSlot(8, 21).toJSON()], // Sunday
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(8, 20).toJSON()]
+      ]
+    },
+    //   {
+    //     clubId: 3, Kärrtorp
+    //     days: [
+    //       [new TimeSlot(8, 20).toJSON()], // Sunday
+    //       [new TimeSlot(17, 20).toJSON()],
+    //       [new TimeSlot(17, 20).toJSON()],
+    //       [new TimeSlot(17, 20).toJSON()],
+    //       [new TimeSlot(17, 20).toJSON()],
+    //       [new TimeSlot(17, 20).toJSON()],
+    //       [new TimeSlot(8, 20).toJSON()]
+    //     ]
+    //   }, 
+    {
+      clubId: 20,
+      days: [
+        [new TimeSlot(8, 21).toJSON()], // Sunday
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(8, 20).toJSON()]
+      ]
+    }, {
+      clubId: 21,
+      days: [
+        [new TimeSlot(8, 21).toJSON()], // Sunday
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(17, 21).toJSON()],
+        [new TimeSlot(8, 20).toJSON()]
+      ]
+    }
+    //   , { Kungsholmen
+    //     clubId: 22,
+    //     days: [
+    //       [new TimeSlot(8, 21).toJSON()], // Sunday
+    //       [new TimeSlot(17, 21).toJSON()],
+    //       [new TimeSlot(17, 21).toJSON()],
+    //       [new TimeSlot(17, 21).toJSON()],
+    //       [new TimeSlot(17, 21).toJSON()],
+    //       [new TimeSlot(17, 21).toJSON()],
+    //       [new TimeSlot(8, 20).toJSON()]
+    //     ]
+    //   }
+  ]
 
-User.add(user)
+  //User.add(user)
 }
