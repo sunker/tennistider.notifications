@@ -11,6 +11,9 @@ mailClient.sendEmail = function (mail) {
       auth: {
         user: process.env.MAIL_ADDRESS,
         pass: process.env.MAIL_PASS
+      },
+      tls: {
+        rejectUnauthorized: false
       }
     }
 
