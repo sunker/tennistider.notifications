@@ -22,7 +22,8 @@ const slotSchema = new Schema({
   price: Number,
   courtNumber: Number,
   surface: String,
-  link: String
+  link: String,
+  type: String
 })
 
 slotSchema.methods = {
@@ -42,10 +43,10 @@ slotSchema.methods = {
     return (!this.isOnWeekend() && this.startTime >= 17)
   },
   getSlotKey() {
-    return this.date.getFullYear() + '_' + (this.date.getMonth() + 1) + '_' + this.date.getDate() + '_' + this.clubId + '_' + this.startTime.toFixed(2).toString() + '-' + this.endTime.toFixed(2).toString() + '_' + (this.surface ? this.surface : 'uknownsurface') + '_' + this.courtNumber
+    return this.date.getFullYear() + '_' + (this.date.getMonth() + 1) + '_' + this.date.getDate() + '_' + this.clubId + '_' + this.startTime.toFixed(2).toString() + '-' + this.endTime.toFixed(2).toString() + '_' + (this.surface ? this.surface : 'uknownsurface') + '_' + this.courtNumber + '_' + this.type
   },
   getSlotKeyExcludingCourtNumber() {
-    return this.date.getFullYear() + '_' + (this.date.getMonth() + 1) + '_' + this.date.getDate() + '_' + this.clubId + '_' + this.startTime.toFixed(2).toString() + '-' + this.endTime.toFixed(2).toString() + '_' + (this.surface ? this.surface : 'uknownsurface') + '_' + this.courtNumber
+    return this.date.getFullYear() + '_' + (this.date.getMonth() + 1) + '_' + this.date.getDate() + '_' + this.clubId + '_' + this.startTime.toFixed(2).toString() + '-' + this.endTime.toFixed(2).toString() + '_' + (this.surface ? this.surface : 'uknownsurface') + '_' + this.type
   },
   daysFromToday() {
     const ONE_DAY = 1000 * 60 * 60 * 24

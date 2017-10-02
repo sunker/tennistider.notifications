@@ -62,6 +62,7 @@ module.exports = class HtmlMailBuilder {
     result += this.buildDaytimeGroup('Lunchtid', 'Lunchtider', this.lunchtimeSlots)
     result += this.buildDaytimeGroup('Kvällstid', 'Kvällstider', this.weekdayNightSlots)
     result += this.buildDaytimeGroup('Helgtid', 'Helgtider', this.weekendSlots)
+    result += `<hr /><i>Klicka <a href="http://tennistider.herokuapp.com/">här</a> för att ändra dina klubbar och tider</i>`.brAppend()
 
     return result.htmlBodyWrap()
   }
