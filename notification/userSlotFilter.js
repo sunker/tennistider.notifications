@@ -15,7 +15,8 @@ userSlotFilter.isPrimeTime = (slot) => {
   if (slot.startTime > 17) return true
   if (slot.isOnWeekend() && slot.startTime > 10) return true
   if (slot.daysFromToday() < 7) return true
-  if (slot.isLunchtimeSlot() && slot.clubId === 0 && slot.daysFromToday() < 5) { return false }
+  if (slot.isLunchtimeSlot() && slot.clubId === 0 && slot.daysFromToday() < 5) { return true }
+  return false
 }
 
 var isTimeInPreferenceRange = (timeIntervalsOfPreference, { startTime, endTime }) => {
