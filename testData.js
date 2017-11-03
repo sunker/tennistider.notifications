@@ -80,5 +80,5 @@ exports.addTestUser = () => {
     //   }
   ]
 
-  //User.add(user)
+  User.add(user)
 }

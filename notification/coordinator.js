@@ -13,7 +13,7 @@ module.exports = {
   async notifyUser(slots, email) {
     return new Promise(async(resolve, reject) => {
       var time = new Date().getHours()
-      if (time >= 5 && time < 21) {
+      if (time >= 7 && time < 23) {
         let mail = new Mail(slots, email)
         mailClient.sendEmail(mail).then(() => {
           console.log(`Mail sent to: ${email}`)
@@ -29,7 +29,7 @@ module.exports = {
   },
   async init() {
     console.log('Time:', new Date().getHours())
-    const users = await User.getAll()
+    const users = await User.getAll().then(users => users.filter(x => x.email === 'erik.sundell87@gmail.com'))
     const slots = await Slot.getAll()
     Promise.all(users.map(user => {
       return new Promise(async(resolve) => {
