@@ -16,7 +16,10 @@ app.use(koaErrorhandler)
 
 mongoose.connect(process.env.MONGO_CLIENT, { useMongoClient: true }).then(
   () => console.log('Connected to database'),
-  (err) => console.log('Could not connect to database: ', err))
+  (err) => {
+    console.log('Could not connect to database: ', err)
+    process.exit(1)
+  })
 
 if (process.env.NODE_ENV === 'debug') addTestUser()
 
