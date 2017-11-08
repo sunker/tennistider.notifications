@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_CLIENT, { useMongoClient: true }).then(
     process.exit(1)
   })
 
-if (process.env.NODE_ENV === 'debug') addTestUser()
+// if (process.env.NODE_ENV === 'debug') addTestUser()
 
 coordinator.init()
 

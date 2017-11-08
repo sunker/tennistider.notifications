@@ -87,8 +87,6 @@ slotSchema.methods = {
 slotSchema.statics = {
   getAll: () => {
     return new Promise((resolve, reject) => {
-      const hour = new Date().getHours()
-      // Slot.find({ date: { $gte: new Date() }, startTime: { $gte: hour } }, function (err, slots) {
       Slot.find({ date: { $gte: new Date() } }, function (err, slots) {
         if (err) {
           reject(err)
