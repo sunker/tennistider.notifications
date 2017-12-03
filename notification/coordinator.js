@@ -18,7 +18,7 @@ module.exports = {
         mailClient.sendEmail(mail).then(() => {
           console.log(`Mail sent to: ${email}`)
           resolve()
-        }).catch(err => {
+        }, () => reject()).catch(err => {
           console.log(`Could not send mail to: ${email}. Error: ${err}`)
           reject()
         })
@@ -55,7 +55,7 @@ module.exports = {
           resolve()
         }
       })
-    }))
+    }, () => setTimeout(() => this.init(), process.env.NODE_ENV === 'debug' ? 1000 : 20000)))
       .then(() => setTimeout(() => this.init(), process.env.NODE_ENV === 'debug' ? 1000 : 20000))
       .catch(() => setTimeout(() => this.init(), process.env.NODE_ENV === 'debug' ? 1000 : 60000))
   }
