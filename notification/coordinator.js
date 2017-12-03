@@ -28,7 +28,7 @@ module.exports = {
     })
   },
   async init() {
-    console.log('Time:', new Date().getHours())
+    console.log('Time:', new Date())
     const users = await User.getAll() // .then(users => users.filter(x => x.email === 'erik.sundell87@gmail.com'))
     const slots = await Slot.getAll()
     Promise.all(users.map(user => {
