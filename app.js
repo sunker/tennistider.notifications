@@ -20,6 +20,7 @@ mongoose.connect(process.env.MONGO_CLIENT, { useMongoClient: true }).then(
     console.log('Could not connect to database: ', err)
     process.exit(1)
   })
+  .catch(() => process.exit(1))
 
 // if (process.env.NODE_ENV === 'debug') addTestUser()
 
@@ -28,3 +29,5 @@ coordinator.init()
 app.use(router.routes())
 app.use(router.allowedMethods())
 app.listen(process.env.PORT || '3013')
+
+process.on('uncaughtException', () => process.exit(1))
