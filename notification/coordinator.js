@@ -51,7 +51,11 @@ module.exports = {
 
           if (newSlots.length > 0) {
             this.notifyUser(newSlots, user.email).then(async () => {
-              const result = await Promise.all(newSlots.map(slot => Notification.add(new Notification({ key: slot.getKey(user.email), timestamp: slot.date }))))
+              const result = await Promise.all(newSlots.map(slot =>
+                Notification.add(new Notification({ key: slot.getKey(user.email), timestamp: slot.date }))
+                  .then(() => {}, error => restart(error))
+                  .catch(error => restart(error))
+              ))
               console.log(`${result.filter(x => x).length} slots saved`)
               resolve()
             }, () => {
