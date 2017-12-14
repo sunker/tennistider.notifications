@@ -31,3 +31,7 @@ app.use(router.allowedMethods())
 app.listen(process.env.PORT || '3013')
 
 process.on('uncaughtException', () => process.exit(1))
+
+setTimeout(() => {
+  process.exit(1)
+}, 1000 * 60 * 30)
