@@ -35,7 +35,7 @@ module.exports = {
   async init() {
     try {
       console.log('Time:', new Date())
-      const users = await User.getAll() // .then(users => users.filter(x => x.email === 'erik.sundell87@gmail.com'))
+      const users = await User.getAll().then(users => users.filter(x => x.email === 'erik.sundell87@gmail.com'))
       const slots = await Slot.getAll()
       Promise.all(users.map(user => {
         return new Promise(async (resolve) => {
