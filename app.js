@@ -5,6 +5,7 @@ const Koa = require('koa'),
   Router = require('koa-router'),
   koaErrorhandler = require('./middleware/errorHandler'),
   koaHealth = require('./middleware/health'),
+  metrics = require('./middleware/metrics'),
   mongoose = require('mongoose'),
   { addTestUser } = require('./testData'),
   coordinator = require('./notification/coordinator'),
@@ -13,6 +14,7 @@ const Koa = require('koa'),
 
 app.use(koaHealth);
 app.use(koaErrorhandler);
+app.use(metrics);
 
 mongoose
   .connect(
