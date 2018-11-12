@@ -27,10 +27,10 @@ var isTimeInPreferenceRange = (
   timeIntervalsOfPreference,
   { startTime, endTime }
 ) => {
-  if (!startTime) return false;
   for (var index = 0; index < timeIntervalsOfPreference.length; index++) {
     var prefTimeSlot = timeIntervalsOfPreference[index];
     if (
+      prefTimeSlot &&
       startTime >= prefTimeSlot.startTime &&
       startTime < prefTimeSlot.endTime
     ) {
