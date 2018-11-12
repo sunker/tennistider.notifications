@@ -1,36 +1,46 @@
-const _ = require('underscore')
+const _ = require('underscore');
 
-const userSlotFilter = {}
+const userSlotFilter = {};
 
 userSlotFilter.filterSlots = (user, slots) => {
   return slots.filter(slot => {
-    var clubSettings = user.slotPreference.find(x => x.clubId === slot.clubId)
-    return clubSettings &&
+    var clubSettings = user.slotPreference.find(x => x.clubId === slot.clubId);
+    return (
+      clubSettings &&
       clubSettings.days[slot.date.getDay()] &&
       isTimeInPreferenceRange(clubSettings.days[slot.date.getDay()], slot)
-  })
-}
+    );
+  });
+};
 
-userSlotFilter.isPrimeTime = (slot) => {
-  if (slot.startTime > 17) return true
-  if (slot.isOnWeekend() && slot.startTime > 10) return true
-  if (slot.daysFromToday() < 7) return true
-  if (slot.isLunchtimeSlot() && slot.clubId === 0 && slot.daysFromToday() < 5) { return true }
-  return false
-}
+userSlotFilter.isPrimeTime = slot => {
+  if (slot.startTime > 17) return true;
+  if (slot.isOnWeekend() && slot.startTime > 10) return true;
+  if (slot.daysFromToday() < 7) return true;
+  if (slot.isLunchtimeSlot() && slot.clubId === 0 && slot.daysFromToday() < 5) {
+    return true;
+  }
+  return false;
+};
 
-var isTimeInPreferenceRange = (timeIntervalsOfPreference, { startTime, endTime }) => {
+var isTimeInPreferenceRange = (
+  timeIntervalsOfPreference,
+  { startTime, endTime }
+) => {
+  if (!startTime) return false;
   for (var index = 0; index < timeIntervalsOfPreference.length; index++) {
-    var prefTimeSlot = timeIntervalsOfPreference[index]
-    if (startTime >= prefTimeSlot.startTime &&
-      startTime < prefTimeSlot.endTime) {
+    var prefTimeSlot = timeIntervalsOfPreference[index];
+    if (
+      startTime >= prefTimeSlot.startTime &&
+      startTime < prefTimeSlot.endTime
+    ) {
       if (prefTimeSlot.active) {
-        return true
+        return true;
       }
     }
   }
 
-  return false
-}
+  return false;
+};
 
-module.exports = userSlotFilter
+module.exports = userSlotFilter;
