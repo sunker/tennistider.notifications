@@ -5,6 +5,13 @@ const userSlotFilter = {};
 userSlotFilter.filterSlots = (user, slots) => {
   return slots.filter(slot => {
     var clubSettings = user.slotPreference.find(x => x.clubId === slot.clubId);
+    if (
+      clubSettings &&
+      clubSettings.hasOwnProperty('inactivated') &&
+      clubSettings.inactivated
+    ) {
+      return false;
+    }
     return (
       clubSettings &&
       clubSettings.days[slot.date.getDay()] &&
