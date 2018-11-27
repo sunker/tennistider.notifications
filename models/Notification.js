@@ -12,7 +12,8 @@ const notificationSchema = new Schema({
   },
   timestamp: {
     type: Date
-  }
+  },
+  createdAt: { type: Date, expires: '30d', default: Date.now }
 })
 
 notificationSchema.methods = {
