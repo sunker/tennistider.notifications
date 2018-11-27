@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
   TimeSlot = require('./TimeSlot'),
-  Schema = mongoose.Schema
+  Schema = mongoose.Schema;
 
 const slotSchema = new Schema({
   id: {
@@ -23,81 +23,131 @@ const slotSchema = new Schema({
   courtNumber: Number,
   surface: String,
   link: String,
+  sport: String,
+  courtName: String,
   type: String
-})
+});
 
 slotSchema.methods = {
   timeSlot() {
-    return new TimeSlot(Number(this.startTime, this.endTime))
+    return new TimeSlot(Number(this.startTime, this.endTime));
   },
   isOnWeekend() {
-    return (this.date.getDay() === 6) || (this.date.getDay() === 0)
+    return this.date.getDay() === 6 || this.date.getDay() === 0;
   },
   isMorningSlot() {
-    return (!this.isOnWeekend() && this.startTime >= 7 && this.endTime <= 9)
+    return !this.isOnWeekend() && this.startTime >= 7 && this.endTime <= 9;
   },
   isLunchtimeSlot() {
-    return (!this.isOnWeekend() && this.startTime >= 11 && this.endTime <= 13)
+    return !this.isOnWeekend() && this.startTime >= 11 && this.endTime <= 13;
   },
   isWeekdayNightSlot() {
-    return (!this.isOnWeekend() && this.startTime >= 17)
+    return !this.isOnWeekend() && this.startTime >= 17;
   },
   getSlotKey() {
-    return this.date.getFullYear() + '_' + (this.date.getMonth() + 1) + '_' + this.date.getDate() + '_' + this.clubId + '_' + this.startTime.toFixed(2).toString() + '-' + this.endTime.toFixed(2).toString() + '_' + (this.surface ? this.surface : 'uknownsurface') + '_' + this.courtNumber + '_' + this.type
+    return (
+      this.date.getFullYear() +
+      '_' +
+      (this.date.getMonth() + 1) +
+      '_' +
+      this.date.getDate() +
+      '_' +
+      this.clubId +
+      '_' +
+      this.startTime.toFixed(2).toString() +
+      '-' +
+      this.endTime.toFixed(2).toString() +
+      '_' +
+      (this.surface ? this.surface : 'uknownsurface') +
+      '_' +
+      this.courtName.replace(' ', '-') +
+      '_' +
+      this.sport.replace(' ', '-') +
+      '_' +
+      this.type
+    );
   },
   getSlotKeyExcludingCourtNumber() {
-    return this.date.getFullYear() + '_' + (this.date.getMonth() + 1) + '_' + this.date.getDate() + '_' + this.clubId + '_' + this.startTime.toFixed(2).toString() + '-' + this.endTime.toFixed(2).toString() + '_' + (this.surface ? this.surface : 'uknownsurface') + '_' + this.type
+    return (
+      this.date.getFullYear() +
+      '_' +
+      (this.date.getMonth() + 1) +
+      '_' +
+      this.date.getDate() +
+      '_' +
+      this.clubId +
+      '_' +
+      this.startTime.toFixed(2).toString() +
+      '-' +
+      this.endTime.toFixed(2).toString() +
+      '_' +
+      (this.surface ? this.surface : 'uknownsurface') +
+      '_' +
+      this.type
+    );
   },
   daysFromToday() {
-    const ONE_DAY = 1000 * 60 * 60 * 24
-    const date1ms = new Date().getTime()
-    const date2ms = this.date.getTime()
-    const differencems = Math.abs(date1ms - date2ms)
+    const ONE_DAY = 1000 * 60 * 60 * 24;
+    const date1ms = new Date().getTime();
+    const date2ms = this.date.getTime();
+    const differencems = Math.abs(date1ms - date2ms);
 
-    return Math.round(differencems / ONE_DAY)
+    return Math.round(differencems / ONE_DAY);
   },
   getKey(userId) {
-    return userId + '_' + this.getSlotKey()
+    return userId + '_' + this.getSlotKey();
   },
   toString() {
-    return this.toSwedishDay() + ' ' + this.date.getDate() + '/' + (this.date.getMonth() + 1) + ' kl ' + this.startTime.toFixed(2).toString() + '-' + this.endTime.toFixed(2).toString() + ' ' + (this.surface ? this.surface : '')
+    return (
+      this.toSwedishDay() +
+      ' ' +
+      this.date.getDate() +
+      '/' +
+      (this.date.getMonth() + 1) +
+      ' kl ' +
+      this.startTime.toFixed(2).toString() +
+      '-' +
+      this.endTime.toFixed(2).toString() +
+      ' ' +
+      (this.surface ? this.surface : '')
+    );
   },
   toSwedishDay() {
     switch (this.date.getDay()) {
       case 1:
-        return 'måndag'
+        return 'måndag';
       case 2:
-        return 'tisdag'
+        return 'tisdag';
       case 3:
-        return 'onsdag'
+        return 'onsdag';
       case 4:
-        return 'torsdag'
+        return 'torsdag';
       case 5:
-        return 'fredag'
+        return 'fredag';
       case 6:
-        return 'lördag'
+        return 'lördag';
       case 0:
-        return 'söndag'
+        return 'söndag';
       default:
-        return ''
+        return '';
     }
   }
-}
+};
 
 slotSchema.statics = {
   getAll: () => {
     return new Promise((resolve, reject) => {
-      Slot.find({ date: { $gte: new Date() } }, function (err, slots) {
+      Slot.find({ date: { $gte: new Date() } }, function(err, slots) {
         if (err) {
-          reject(err)
+          reject(err);
         } else {
-          resolve(slots)
+          resolve(slots);
         }
-      })
-    })
+      });
+    });
   }
-}
+};
 
-const Slot = mongoose.model('slot', slotSchema)
+const Slot = mongoose.model('slot', slotSchema);
 
-module.exports = Slot
+module.exports = Slot;
