@@ -41,13 +41,15 @@ module.exports = {
   async init() {
     try {
       console.log('Time:', new Date());
-      const users = await User.getAll().then(users =>
-        users.filter(
-          x =>
-            x.email === 'erik.sundell87@gmail.com' ||
-            x.email === 'jonas.bostrom@amendo.se'
-        )
-      );
+      const users = await User.getAll();
+      // .then(users =>
+      //   users.filter(
+      //     x =>
+      //       // x.email === 'erik.sundell87@gmail.com' ||
+      //       // x.email === 'jonas.bostrom@amendo.se' ||
+      //       x.email === 'johan.gunnarsson.e@gmail.com'
+      //   )
+      // );
       const slots = await Slot.getAll();
       Promise.all(
         users.map(
